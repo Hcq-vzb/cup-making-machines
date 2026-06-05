@@ -1,0 +1,53 @@
+.catige{width:100%;float:left;margin-top:3%;}
+.catige-main{padding:10px;}
+.catige-a{width:100%;float:left;border:solid 1px #dedede;margin-bottom:3%;}
+.catige-title{width:100%;float:left;border-bottom:solid 1px #dedede;}
+.catige-title h2{float:left; font-size:20px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;}
+.catige-title em{float:right; font-size:14px;font-style: normal;margin-top:10px;margin-bottom: 10px;}.catige-title em a{ color:#666;}
+.catige-title h2 a{ color:#333;font-size: 20px;font-weight: normal;}
+.catige-list{width:100%;float:left;margin-top:3%;margin-bottom:3%;}
+.catige-list ul{display: grid; gap: 20px 20px;grid-template-columns: repeat(4,1fr);}
+.catige-list ul li{float:left;}
+.catige-list ul li .list-img{width:100%;float:left;text-align: center;border: solid 1px #f4f4f4;}.catige-list ul li .list-img img{max-width:100%;max-height: 300px;}
+.catige-list ul li .list-title{width:100%;float:left;margin-top:10px; text-align:center;}
+.catige-list ul li .list-title h3{ font-size:16px;}
+.catige-list ul li .list-title h3 a{ color:#333;font-size:16px;font-weight: normal;display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;}
+.catgio{width:100%;float:left;}
+table td,table th{border:solid 1px #333;padding: 5px;}
+
+.plistdeul h2,.plistdeul h3,.plistdeul h4,.plistdeul h5,.plistdeul h6{ font-weight:bold;margin-top:10px;margin-bottom:10px; color:#333;}
+.plistdeul ul{margin-left: 20px;margin-right: 20px;}.plistdeul ul li{ list-style:disc;}
+.plistdeul table{border-collapse: collapse;}
+.plistdeul b,.plistdeul strong{ color:#333; font-weight:bold;}.plistdeul img{max-width:100%;}
+
+.lanmde h2,.lanmde h3,.lanmde h4,.lanmde h5,.lanmde h6{ font-weight:bold;margin-top:10px;margin-bottom:10px; color:#333;}
+.lanmde ul{margin-left: 20px;margin-right: 20px;}.lanmde ul li{list-style:disc;}
+.lanmde table{border-collapse: collapse; }
+.lanmde b,.lanmde strong{ color:#333; font-weight:bold;}.lanmde img{max-width:100%;}
+
+.datal h2,.datal h3,.datal h4,.datal h5,.datal h6{ font-weight:bold;margin-top:10px;margin-bottom:10px; color:#333;}
+.datal ul{margin-left: 20px;margin-right: 20px;}.datal ul li{ list-style:disc;}
+.datal table{border-collapse: collapse; }
+.datal b,.datal strong{ color:#333; font-weight:bold;}.datal img{max-width:100%;}
+
+.protip h2,.protip h3,.protip h4,.protip h5,.protip h6{ font-weight:bold;margin-top:10px;margin-bottom:10px; color:#333;}
+.protip ul{margin-left: 20px;margin-right: 20px;}.protip ul li{ list-style:disc;}
+.protip table{border-collapse: collapse; }
+.protip b,.protip strong{ color:#333; font-weight:bold;}.protip img{max-width:100%;}
+
+.catgiaydeil{width:100%;float:left;padding-top: 3%;}.protip,.maeta{width:100%;float:left;}
+.catgiaydeil h1{text-align: left;font-size: 26px; font-weight: bold; border-bottom: solid 1px #f4f4f4; padding-bottom: 2%; margin-bottom: 2%;width: 100%; float: left;color: #333;}
+.plistdeul h2{font-size: 24px;}.plistdeul h3{font-size: 22px;}.plistdeul h4{font-size: 20px;}.plistdeul h5{font-size: 18px;}
+.poorder .tab-list{border: solid 1px #f3f3f3;padding: 2% !important;margin-bottom: 3%;
+  margin-top: 0;}
+.poorder .tab-list dd,.poorder .tab-list dt{padding:0;margin:0;}
+
+
+@media(max-width:768px){
+	.catige-title h2{ font-size:16px;}.catige-list ul li .list-title h3{ font-size:14px;}
+	.catige-list ul{grid-template-columns: repeat(2,1fr);}
+		.catgiaydeil h1{ font-size:20px;}
+	}

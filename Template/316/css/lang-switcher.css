@@ -1,0 +1,105 @@
+/* Direct EN / AR language switcher (no dropdown) */
+.lang-switch-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+}
+
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.lang-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.lang-switch-btn.is-active {
+    background: #1a6dcc;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(26, 109, 204, 0.35);
+    cursor: default;
+}
+
+a.lang-switch-btn:hover {
+    color: #1a6dcc;
+    background: rgba(26, 109, 204, 0.08);
+}
+
+/* Override legacy dropdown language menu */
+#header > .nav > .menu .lang_cont.lang-switch-wrap .c_cont,
+#header > .nav > .menu .lang_cont.lang-switch-wrap ul.lang {
+    display: none !important;
+}
+
+#header > .nav > .menu .lang_cont.lang-switch-wrap .lang-switch,
+#header > .nav > .menu .lang_cont.lang-switch-wrap:hover .lang-switch {
+    position: static !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+#header > .nav > .menu .lang_cont.lang-switch-wrap:hover ul.lang {
+    transform: none !important;
+    -webkit-transform: none !important;
+}
+
+/* Mobile menu */
+.mob-yuy.lang-switch-mobile .lang-switch {
+    margin-top: 12px;
+}
+
+.mob-yuy.lang-switch-mobile .lang-switch-btn {
+    min-width: 52px;
+    height: 36px;
+    font-size: 13px;
+}
+
+.mob-yuy.lang-switch-mobile h3 {
+    cursor: default;
+}
+
+.mob-yuy.lang-switch-mobile h3.lon {
+    color: inherit;
+}
+
+@media (max-width: 991px) {
+    .lang-switch-wrap {
+        margin: 0 4px;
+    }
+
+    .lang-switch-btn {
+        min-width: 36px;
+        height: 28px;
+        padding: 0 8px;
+        font-size: 11px;
+    }
+}

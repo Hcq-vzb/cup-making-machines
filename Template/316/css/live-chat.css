@@ -1,0 +1,328 @@
+/* KIWL live chat widget */
+#kiwl-live-chat {
+  --kiwl-chat-primary: #c8161d;
+  --kiwl-chat-primary-dark: #a01218;
+  --kiwl-chat-bg: #f5f6f8;
+  --kiwl-chat-panel: #fff;
+  --kiwl-chat-text: #333;
+  --kiwl-chat-muted: #888;
+  --kiwl-chat-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  z-index: 999999;
+  font-family: "Montserrat-Regular", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#kiwl-live-chat.is-rtl {
+  right: auto;
+  left: 20px;
+  direction: rtl;
+}
+
+.kiwl-chat-toggle {
+  width: 58px;
+  height: 58px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kiwl-chat-primary), var(--kiwl-chat-primary-dark));
+  color: #fff;
+  cursor: pointer;
+  box-shadow: var(--kiwl-chat-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.kiwl-chat-toggle:hover {
+  transform: scale(1.06);
+}
+
+.kiwl-chat-toggle svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.kiwl-chat-toggle .kiwl-chat-close-icon {
+  display: none;
+}
+
+#kiwl-live-chat.is-open .kiwl-chat-toggle .kiwl-chat-open-icon {
+  display: none;
+}
+
+#kiwl-live-chat.is-open .kiwl-chat-toggle .kiwl-chat-close-icon {
+  display: block;
+}
+
+.kiwl-chat-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background: #25d366;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  animation: kiwl-chat-pulse 2s infinite;
+}
+
+#kiwl-live-chat.is-open .kiwl-chat-badge,
+#kiwl-live-chat.has-interacted .kiwl-chat-badge {
+  display: none;
+}
+
+@keyframes kiwl-chat-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.85; }
+}
+
+.kiwl-chat-panel {
+  position: absolute;
+  right: 0;
+  left: auto;
+  bottom: 72px;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  max-height: 520px;
+  background: var(--kiwl-chat-panel);
+  border-radius: 16px;
+  box-shadow: var(--kiwl-chat-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.96);
+  transform-origin: right bottom;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+#kiwl-live-chat.is-rtl .kiwl-chat-panel {
+  right: auto;
+  left: 0;
+  transform-origin: left bottom;
+}
+
+#kiwl-live-chat.is-open .kiwl-chat-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.kiwl-chat-header {
+  background: linear-gradient(135deg, var(--kiwl-chat-primary), var(--kiwl-chat-primary-dark));
+  color: #fff;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.kiwl-chat-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kiwl-chat-avatar svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+.kiwl-chat-header-info h4 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.kiwl-chat-header-info p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.kiwl-chat-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.kiwl-chat-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #25d366;
+  border-radius: 50%;
+}
+
+.kiwl-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--kiwl-chat-bg);
+  min-height: 200px;
+  max-height: 320px;
+}
+
+.kiwl-chat-msg {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 8px;
+  animation: kiwl-chat-fade-in 0.35s ease;
+}
+
+@keyframes kiwl-chat-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kiwl-chat-msg.is-bot .kiwl-chat-bubble {
+  background: #fff;
+  color: var(--kiwl-chat-text);
+  border-radius: 4px 14px 14px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.kiwl-chat-msg.is-user {
+  justify-content: flex-end;
+}
+
+.kiwl-chat-msg.is-user .kiwl-chat-bubble {
+  background: var(--kiwl-chat-primary);
+  color: #fff;
+  border-radius: 14px 4px 14px 14px;
+}
+
+.kiwl-chat-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.kiwl-chat-bubble strong {
+  font-weight: 600;
+}
+
+.kiwl-chat-typing {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 14px;
+  width: fit-content;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.kiwl-chat-typing span {
+  width: 7px;
+  height: 7px;
+  background: #bbb;
+  border-radius: 50%;
+  animation: kiwl-chat-dot 1.2s infinite;
+}
+
+.kiwl-chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+.kiwl-chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes kiwl-chat-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+.kiwl-chat-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 12px;
+  background: var(--kiwl-chat-bg);
+}
+
+.kiwl-chat-option {
+  border: 1px solid var(--kiwl-chat-primary);
+  background: #fff;
+  color: var(--kiwl-chat-primary);
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: inherit;
+}
+
+.kiwl-chat-option:hover {
+  background: var(--kiwl-chat-primary);
+  color: #fff;
+}
+
+.kiwl-chat-footer {
+  padding: 12px 16px 16px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.kiwl-chat-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.kiwl-chat-wa-btn:hover {
+  background: #1da851;
+  color: #fff;
+}
+
+.kiwl-chat-wa-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  #kiwl-live-chat {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  #kiwl-live-chat.is-rtl {
+    left: 12px;
+  }
+
+  .kiwl-chat-panel {
+    width: calc(100vw - 24px);
+    max-height: 70vh;
+  }
+
+  .kiwl-chat-messages {
+    max-height: 45vh;
+  }
+}
